@@ -1,0 +1,43 @@
+# Sample MCP-Style Configuration for Security Scanning Demo
+# This file simulates a configuration that the Agent Audit scanner would analyze.
+
+version: "1.0"
+agent_name: "ResearchAgent"
+
+# Tool definitions
+tools:
+  - name: fetch_market_data
+    type: "function"
+    endpoint: "https://api.example.com/market"
+    method: "GET"
+    auth:
+      type: "bearer"
+      # NOTE: In real configs, credentials should be in environment variables, not here.
+      # This is intentionally flagged by the security scanner as a potential issue.
+      token: "hardcoded_token_12345"
+
+  - name: send_email
+    type: "function"
+    endpoint: "https://api.example.com/email"
+    method: "POST"
+    auth:
+      type: "api_key"
+      api_key: "sk_test_abcdef123456"
+
+# Policy rules
+policies:
+  - name: "no_pii_without_approval"
+    description: "Require human approval before accessing PII"
+    condition: "data_contains_pii == true"
+    action: "require_human_approval"
+
+  - name: "no_trade_execution_without_signoff"
+    description: "Require human signoff before executing trades"
+    condition: "action == 'execute_trade'"
+    action: "require_human_approval"
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "json"
+  output: "./audit_logs.jsonl"

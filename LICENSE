@@ -1,0 +1,54 @@
+Agentic AI Governance & Observability Platform
+Source-Available License (Non-Commercial)
+
+Copyright (c) 2026 Dheeraj Krishna Kumar. All rights reserved.
+
+1. Definitions
+
+   "Software" means the Agentic AI Governance & Observability Platform, including all source code, documentation, and associated files.
+
+   "Non-Commercial Use" means use for research, evaluation, educational, or personal purposes only, without any commercial, production, or revenue-generating intent.
+
+   "Commercial Use" means any use not qualifying as Non-Commercial Use, including but not limited to: deployment in production environments, integration into commercial products or services, or use for revenue-generating activities.
+
+2. License Grant
+
+   Subject to the terms of this license, you are granted a non-exclusive, non-transferable, revocable license to:
+
+   a) View, modify, and run the Software for Non-Commercial Use only.
+   b) Distribute unmodified copies of the Software for Non-Commercial Use, provided that all copyright notices, disclaimers, and this license are retained.
+
+3. Restrictions
+
+   You may NOT:
+
+   a) Use the Software for Commercial Use without obtaining a separate commercial license from Dheeraj Krishna Kumar.
+   b) Remove or modify any copyright notices, disclaimers, or attribution in the Software.
+   c) Sublicense, sell, or otherwise commercially exploit the Software or any derivatives without explicit written permission.
+   d) Use the Software in any way that violates applicable laws or regulations.
+
+4. Attribution
+
+   All copies, derivatives, and distributions of this Software (or portions thereof) must retain this license and provide clear attribution to Dheeraj Krishna Kumar as the original author.
+
+5. Disclaimer of Warranty
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR ACCURACY.
+
+   IN NO EVENT SHALL THE AUTHOR (DHEERAJ KRISHNA KUMAR) BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THIS SOFTWARE OR ITS OUTPUTS, WHETHER IN CONTRACT, TORT, OR OTHERWISE.
+
+6. Termination
+
+   This license is automatically terminated if you violate any of its terms. Upon termination, you must cease all use of the Software and destroy all copies.
+
+7. Commercial License
+
+   For Commercial Use, you must obtain a separate commercial license from Dheeraj Krishna Kumar. See COMMERCIAL_LICENSE_TERMS.md for details.
+
+8. Governing Law
+
+   This license is governed by the laws of India, without regard to conflict-of-law principles.
+
+---
+
+For questions or commercial licensing inquiries, see CONTACT.md.
