@@ -29,7 +29,6 @@ This project is designed to demonstrate production-grade agentic AI governance c
 
 **This project is not:**
 - A trading system, investment adviser, market-prediction engine, or recommendation tool.
-- Affiliated with, endorsed by, or representative of BlackRock, Aladdin, Vanguard, or any fund manager.
 - A substitute for professional legal, tax, or investment advice.
 - A generic observability tool — explicitly scoped to agentic AI systems with cognitive, operational, and contextual trace surfaces. [1]
 
