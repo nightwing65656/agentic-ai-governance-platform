@@ -36,22 +36,40 @@ This project is designed to demonstrate production-grade agentic AI governance c
 
 ## Quick Start (Local Development)
 
+
 ```bash
 # Install dependencies
 pip install -r requirements.txt
 
+
 # Run tests
 pytest
+
 
 # Run security scan on sample agent
 python -m src.security.agent_audit examples/sample_agent.py
 
+
 # Run instrumentation demo
 python -m src.main --demo
 
+
 # Generate sample compliance report
 python -m src.main --generate-report --input examples/sample_audit_log.jsonl --output examples/sample_compliance_report.md
+
+
+# Run OpenTelemetry tracing demo (console-only)
+python -m examples.otel_tracing_demo
+
+
+# Run OpenTelemetry tracing demo with OTLP export
+# (e.g., to a local Grafana Tempo, Jaeger, or other OTLP collector)
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
+OTEL_SERVICE_NAME=agentic-governance-demo \
+python -m examples.otel_tracing_demo
 ```
+
+Each agent run produces an OpenTelemetry trace with attributes such as `agent.id`, `agent.name`, `query.symbol`, `audit.events_recorded`, and `audit.integrity_verified`, alongside tamper-evident audit logs.
 
 ---
 
@@ -62,7 +80,7 @@ python -m src.main --generate-report --input examples/sample_audit_log.jsonl --o
 - **AgentTrace-style instrumentation** — Decorators for operational, cognitive, contextual logging. [1]
 - **Agent Audit-style security scanner** — Tool-boundary detection, credential scanning, MCP config checks. [2]
 - **Regulator-ready report generation** — CSV/PDF compliance reports for any agent run. [3]
-- **GitHub Actions CI** — pytest, Ruff, security scan, disclaimer-presence checks on every push.
+- **GitHub Actions CI** — pytest, Ruff, and pip-audit on every push.
 
 ---
 

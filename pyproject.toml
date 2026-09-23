@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-ai-governance-platform"
+version = "0.1.0"
+description = "Source-available governance, observability, and audit tooling for agentic AI workflows."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Dheeraj Krishna Kumar" },
+]
+keywords = [
+  "agentic-ai",
+  "ai-governance",
+  "audit-logging",
+  "observability",
+  "security",
+  "compliance",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "License :: Other/Proprietary License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security",
+  "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+  "pydantic>=2.0.0",
+  "pyyaml>=6.0.0",
+  "opentelemetry-api>=1.20.0",
+  "opentelemetry-sdk>=1.20.0",
+  "opentelemetry-exporter-otlp-proto-grpc>=1.20.0",
+  "astroid>=3.0.0",
+  "markdown>=3.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pip-audit>=2.10.1",
+  "pyright>=1.1.400",
+  "mypy>=1.13.0",
+  "pytest>=7.4.0",
+  "pytest-cov>=4.1.0",
+  "ruff>=0.1.0",
+]
+
+[project.scripts]
+agent-governance = "src.main:main"
+
+[tool.setuptools]
+packages = [
+  "src",
+  "src.audit",
+  "src.instrumentation",
+  "src.report",
+  "src.schemas",
+  "src.security",
+  "examples",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py310"
+[tool.pyright]
+include = ["src", "examples"]
+exclude = ["build", "dist", "venv"]
+pythonVersion = "3.10"
+typeCheckingMode = "basic"
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src", "examples"]
+exclude = "^(build|dist|venv)/"
+check_untyped_defs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = false
