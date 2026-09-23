@@ -84,15 +84,15 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
 
-      - name: Install project with dev extras
+      - name: Install audit dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install ".[dev]"
+          python -m pip install pip-audit
 
       - name: Run pip-audit
         run: |
           python -m pip_audit \
-            --skip-editable \
+            -r requirements.txt \
             --format columns \
             --desc \
             --timeout 60
