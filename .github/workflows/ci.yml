@@ -90,4 +90,4 @@ jobs:
           python -m pip install ".[dev]"
 
       - name: Run pip-audit
-        run: python -m pip_audit
+        run: python -m pip_audit --skip-editable
