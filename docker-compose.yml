@@ -1,0 +1,18 @@
+# Minimal docker-compose for piloting the governance platform.
+# Not intended as a hardened production configuration.
+
+services:
+  governance:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agentic-governance
+    volumes:
+      # Persist audit logs outside the container
+      - ./audit_logs_container:/app/audit_logs
+    environment:
+      # Example: send OpenTelemetry traces to an external collector
+      # OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4317
+      OTEL_SERVICE_NAME: agentic-governance-demo
+    # Override command if you want a different workload, e.g.:
+    # command: ["agent-governance", "--demo"]

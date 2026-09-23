@@ -37,6 +37,6 @@ This project is an independent, individual-developer work.
 - AgentTrace-style instrumentation (operational, cognitive, contextual)
 - Agent Audit-style security scanner (tool-boundary, credential, MCP config)
 - Regulator-ready compliance report generation
-- GitHub Actions CI (pytest, Ruff, security scan, disclaimer checks)
+- GitHub Actions CI (pytest, Ruff, pip-audit)
 
 See [README.md](./README.md) for quick start and [docs/architecture.md](./docs/architecture.md) for technical details.

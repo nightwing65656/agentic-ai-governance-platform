@@ -1,14 +1,17 @@
 """
 AgentTrace-Style Instrumentation
 
+
 Implements AgentTrace's three-surface taxonomy (operational, cognitive, contextual)
 via decorators and context managers for easy integration with agent code.
 """
+
 
 import time
 import uuid
 from collections.abc import Callable
 from datetime import datetime, timezone
+from typing import Literal
 
 from src.audit.tamper_evident_logger import TamperEvidentLogger
 from src.schemas.audit_log import (
@@ -21,17 +24,21 @@ from src.schemas.audit_log import (
 
 GENESIS_HASH = "0" * 64
 
+
 _logger: TamperEvidentLogger | None = None
 _last_hash: str = GENESIS_HASH
+
 
 
 def configure_logger(log_path: str | None = None) -> TamperEvidentLogger:
     """Configure a fresh logger and reset the in-memory hash-chain state."""
     global _logger, _last_hash
 
+
     _logger = TamperEvidentLogger(log_path)
     _last_hash = GENESIS_HASH
     return _logger
+
 
 
 def get_logger() -> TamperEvidentLogger:
@@ -39,7 +46,9 @@ def get_logger() -> TamperEvidentLogger:
     if _logger is None:
         return configure_logger()
 
+
     return _logger
+
 
 
 def set_last_hash(hash_value: str) -> None:
@@ -48,8 +57,10 @@ def set_last_hash(hash_value: str) -> None:
     _last_hash = hash_value
 
 
+
 def operational_trace(event_type: EventType = EventType.METHOD_START):
     """Decorate a method to record start, completion, and error audit events."""
+
 
     def decorator(func: Callable) -> Callable:
         def wrapper(*args, **kwargs):
@@ -57,6 +68,7 @@ def operational_trace(event_type: EventType = EventType.METHOD_START):
             start_time = time.time()
             trace_id = uuid.uuid4()
             span_id = uuid.uuid4()
+
 
             try:
                 entry = AuditLogEntry.create_with_hash(
@@ -75,7 +87,9 @@ def operational_trace(event_type: EventType = EventType.METHOD_START):
                 logger.log(entry)
                 set_last_hash(entry.current_log_hash)
 
+
                 result = func(*args, **kwargs)
+
 
                 duration_ms = int((time.time() - start_time) * 1000)
                 entry = AuditLogEntry.create_with_hash(
@@ -94,6 +108,7 @@ def operational_trace(event_type: EventType = EventType.METHOD_START):
                 )
                 logger.log(entry)
                 set_last_hash(entry.current_log_hash)
+
 
                 return result
             except Exception as exc:
@@ -117,13 +132,17 @@ def operational_trace(event_type: EventType = EventType.METHOD_START):
                 set_last_hash(entry.current_log_hash)
                 raise
 
+
         return wrapper
+
 
     return decorator
 
 
+
 def cognitive_trace(event_type: EventType = EventType.LLM_PROMPT):
     """Decorate a method to record prompt, completion, and error audit events."""
+
 
     def decorator(func: Callable) -> Callable:
         def wrapper(*args, **kwargs):
@@ -131,10 +150,12 @@ def cognitive_trace(event_type: EventType = EventType.LLM_PROMPT):
             trace_id = uuid.uuid4()
             span_id = uuid.uuid4()
 
+
             prompt = kwargs.get("prompt", args[0] if args else None)
             input_fingerprint = (
                 f"prompt_{len(prompt)}_chars" if prompt is not None else None
             )
+
 
             try:
                 entry = AuditLogEntry.create_with_hash(
@@ -154,7 +175,9 @@ def cognitive_trace(event_type: EventType = EventType.LLM_PROMPT):
                 logger.log(entry)
                 set_last_hash(entry.current_log_hash)
 
+
                 result = func(*args, **kwargs)
+
 
                 output_fingerprint = (
                     f"response_{len(str(result))}_chars"
@@ -179,6 +202,7 @@ def cognitive_trace(event_type: EventType = EventType.LLM_PROMPT):
                 logger.log(entry)
                 set_last_hash(entry.current_log_hash)
 
+
                 return result
             except Exception as exc:
                 entry = AuditLogEntry.create_with_hash(
@@ -199,13 +223,17 @@ def cognitive_trace(event_type: EventType = EventType.LLM_PROMPT):
                 set_last_hash(entry.current_log_hash)
                 raise
 
+
         return wrapper
+
 
     return decorator
 
 
+
 class contextual_trace:
     """Context manager that records start and completion/error audit events."""
+
 
     def __init__(self, event_type: EventType, resource: str | None = None) -> None:
         self.event_type = event_type
@@ -214,8 +242,10 @@ class contextual_trace:
         self.trace_id = uuid.uuid4()
         self.start_time: float | None = None
 
+
     def __enter__(self):
         self.start_time = time.time()
+
 
         entry = AuditLogEntry.create_with_hash(
             previous_hash=_last_hash,
@@ -234,19 +264,23 @@ class contextual_trace:
         set_last_hash(entry.current_log_hash)
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb) -> bool:
+
+    def __exit__(self, exc_type, exc_val, exc_tb) -> Literal[False]:
         if self.start_time is None:
             raise RuntimeError("Contextual trace was not entered.")
+
 
         duration_ms = int((time.time() - self.start_time) * 1000)
         event_type = EventType.METHOD_COMPLETE
         decision_outcome = DecisionOutcome.SUCCESS
         error_message = None
 
+
         if exc_type is not None:
             event_type = EventType.METHOD_ERROR
             decision_outcome = DecisionOutcome.FAILURE
             error_message = str(exc_val)
+
 
         entry = AuditLogEntry.create_with_hash(
             previous_hash=_last_hash,
