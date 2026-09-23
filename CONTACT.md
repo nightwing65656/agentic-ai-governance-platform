@@ -4,7 +4,6 @@
 
 **Dheeraj Krishna Kumar**  
 AI Engineer & Technology Consultant  
-MTech in Data Science & Artificial Intelligence
 
 ## Professional Profiles
 
@@ -13,13 +12,13 @@ MTech in Data Science & Artificial Intelligence
 
 ## Inquiries
 
-### General Questions, Bug Reports, or Corrections
+### General Questions, Bug Reports or Corrections
 
 Please open a GitHub Issue in this repository or contact via LinkedIn.
 
 ### Commercial Licensing
 
-This software is licensed under a **source-available, non-commercial license**. If you wish to use this software in a commercial, production, or revenue-generating context, please contact Dheeraj Krishna Kumar via LinkedIn to discuss commercial licensing terms.
+This software is licensed under a **source-available, non-commercial license**. If you wish to use this software in a commercial, production or revenue-generating context, please contact Dheeraj Krishna Kumar via LinkedIn to discuss commercial licensing terms.
 
 Commercial licenses may include:
 - Production deployment rights
@@ -29,7 +28,7 @@ Commercial licenses may include:
 
 ### Collaboration or Employment Opportunities
 
-If you are interested in collaboration or employment opportunities related to agentic AI, AI governance, or financial-services AI systems, please reach out via LinkedIn.
+If you are interested in collaboration or employment opportunities related to Agentic AI, AI governance or financial-services AI systems, please reach out via LinkedIn.
 
 ## Response Time
 
@@ -37,4 +36,4 @@ I aim to respond to all inquiries within 2–3 business days.
 
 ---
 
-**Last updated:** September 22, 2026
+**Last updated:** September 23, 2026
