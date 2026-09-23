@@ -7,12 +7,11 @@ It simulates a simple research agent that calls a tool and returns a result.
 NOTE: This is for demonstration purposes only. Do not use in production.
 """
 
-import os
-from typing import Dict, Any
+from typing import Any
 
 
 # Simulated tool: fetch_market_data
-def fetch_market_data(symbol: str) -> Dict[str, Any]:
+def fetch_market_data(symbol: str) -> dict[str, Any]:
     """Simulate fetching market data for a given symbol."""
     return {
         "symbol": symbol,
