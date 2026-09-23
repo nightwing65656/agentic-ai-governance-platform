@@ -121,7 +121,7 @@ agentic-ai-governance-platform/
 
 ## Non-Affiliation Notice
 
-This project is an independent, individual-developer work. It is not affiliated with, endorsed by, or representative of BlackRock, Aladdin, Vanguard, or any other investment manager or technology provider. References to BlackRock/Aladdin are solely as an inspirational quality benchmark for engineering rigor.
+This project is an independent, individual-developer work.
 
 ---
 
