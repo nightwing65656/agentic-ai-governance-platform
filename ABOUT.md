@@ -10,8 +10,6 @@ The Agentic AI Governance & Observability Platform is a portfolio-quality projec
 - EU AI Act Article 12-compliant audit trail implementation
 - Financial-services-focused governance and compliance reporting
 
-This project is intended to position the author (Dheeraj Krishna Kumar) for senior AI engineering and architecture roles in financial services and regulated environments.
-
 ## Research Foundations
 
 This project implements and adapts concepts from:
@@ -24,13 +22,12 @@ This project implements and adapts concepts from:
 
 **Dheeraj Krishna Kumar**  
 AI Engineer & Technology Consultant  
-MTech in Data Science & Artificial Intelligence  
 LinkedIn: https://www.linkedin.com/in/dheeraj-krishna-kumar/  
 GitHub: https://github.com/nightwing65656
 
 ## Non-Affiliation Notice
 
-This project is an independent, individual-developer work. It is not affiliated with, endorsed by, or representative of BlackRock, Aladdin, Vanguard, or any other investment manager or technology provider. References to BlackRock/Aladdin are solely as an inspirational quality benchmark for engineering rigor.
+This project is an independent, individual-developer work. 
 
 ## Version
 
