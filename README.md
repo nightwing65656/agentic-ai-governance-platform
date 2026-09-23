@@ -1,5 +1,10 @@
 # Agentic AI Governance & Observability Platform
 
+[![CI](https://github.com/nightwing65656/agentic-ai-governance-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/nightwing65656/agentic-ai-governance-platform/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/nightwing65656/agentic-ai-governance-platform)](https://github.com/nightwing65656/agentic-ai-governance-platform/releases)
+
+**Status:** v0.1.0 MVP — Reference implementation of governed, observable agentic AI for risk-sensitive domains.
+
 **License:** Source-available for non-commercial research and evaluation use only. Commercial, production, or revenue-generating use requires a separate commercial license from Dheeraj Krishna Kumar. [Contact for commercial licensing](./CONTACT.md).
 
 **Disclaimer:** This project is for informational and educational purposes only. It does not constitute investment, tax, or legal advice. No buy, sell, hold, ranking, or suitability recommendations are made. Human review is required before any output is used. [Full disclaimer](./DISCLAIMER.md).
