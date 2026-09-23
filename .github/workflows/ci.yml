@@ -91,21 +91,8 @@ jobs:
 
       - name: Run pip-audit
         run: |
-          set -e
-
-          for attempt in 1 2 3 4 5; do
-            if python -m pip_audit \
-                --skip-editable \
-                --timeout 60; then
-              exit 0
-            fi
-
-            if [ "$attempt" -eq 5 ]; then
-              echo "pip-audit failed after $attempt attempts"
-              exit 1
-            fi
-
-            delay=$((attempt * 15))
-            echo "pip-audit failed; retrying in ${delay}s..."
-            sleep "$delay"
-          done        
+          python -m pip_audit \
+            --skip-editable \
+            --format columns \
+            --desc \
+            --timeout 60
