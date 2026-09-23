@@ -9,6 +9,8 @@ NOTE: This is for demonstration purposes only. Do not use in production.
 
 from typing import Any
 
+from src.instrumentation.agent_trace import operational_trace
+
 
 # Simulated tool: fetch_market_data
 def fetch_market_data(symbol: str) -> dict[str, Any]:
@@ -17,7 +19,7 @@ def fetch_market_data(symbol: str) -> dict[str, Any]:
         "symbol": symbol,
         "price": 150.25,
         "change": 2.5,
-        "volume": 1000000
+        "volume": 1_000_000,
     }
 
 
@@ -25,27 +27,25 @@ def fetch_market_data(symbol: str) -> dict[str, Any]:
 class ResearchAgent:
     """A simple research agent that fetches market data and returns a summary."""
 
-    def __init__(self, name: str = "ResearchAgent"):
+    def __init__(self, name: str = "ResearchAgent") -> None:
         self.name = name
 
+    @operational_trace()
     def run(self, symbol: str) -> str:
         """Run the agent for a given stock symbol."""
         # Call tool
         data = fetch_market_data(symbol)
 
         # Generate summary (deterministic, no LLM for simplicity)
-        summary = (
+        return (
             f"Symbol: {data['symbol']}\n"
             f"Price: ${data['price']}\n"
             f"Change: {data['change']}%\n"
             f"Volume: {data['volume']:,}"
         )
 
-        return summary
-
 
 # Entry point for demo
 if __name__ == "__main__":
     agent = ResearchAgent()
-    result = agent.run("AAPL")
-    print(result)
+    print(agent.run("AAPL"))
